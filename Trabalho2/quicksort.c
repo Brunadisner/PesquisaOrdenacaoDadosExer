@@ -1,10 +1,7 @@
-//Não sei porque só funciona se declarar swap aqui
-#include "swap.c"
-
 int particiona (int *vet, int inicio, int fim) {
     int pivo = vet[inicio];
     int aux, esq, dir;
-    esq = inicio;
+    esq = inicio + 1;
     dir = fim;
     while(esq<dir){
         while(vet[esq]<=pivo){
@@ -17,7 +14,6 @@ int particiona (int *vet, int inicio, int fim) {
             aux = vet[esq];
             vet[esq] = vet[dir];
             vet[dir] = aux;
-            //swap (&vet[esq], &vet[dir]);
         }
         
         
@@ -29,9 +25,12 @@ int particiona (int *vet, int inicio, int fim) {
 
 void quicksort (int *vet, int inicio, int fim) {
     int pivo;
+    printf("Inicio %d \n fim %d \n",inicio,fim);
     if (inicio < fim) {
         pivo = particiona (vet, inicio, fim);
+        printf("pivo %d\n ",pivo);
         quicksort(vet, inicio, pivo-1);
         quicksort(vet, pivo+1, fim);
+
     }
 }
